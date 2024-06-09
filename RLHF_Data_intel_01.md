@@ -1,4 +1,5 @@
 # 使用数据表格提示来改善RAG和LLMs的结果
+原链接: https://medium.com/intel-tech/tabular-data-rag-llms-improve-results-through-data-table-prompting-bcb42678914b
 **作者：Eduardo Rojas Oviedo 和 Ezequiel Lanza**
 
 假设你是一名投资公司的金融分析师。你的工作是了解市场趋势并识别潜在的投资机会。你的客户往往对世界上最富有的人及其财富来源感兴趣。你可能会考虑使用检索增强生成（RAG）系统来快速识别市场趋势、投资机会和经济风险，并回答诸如“哪个行业有最多的亿万富翁？”或“不同地区的亿万富翁性别分布如何？”的问题。
