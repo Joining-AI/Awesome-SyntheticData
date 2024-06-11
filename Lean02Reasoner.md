@@ -1,3 +1,7 @@
+# LeanReasoner: Boosting Complex Logical Reasoning with Lean
+
+[原链接](https://arxiv.org/html/2403.13312v1)
+
 ### 摘要
 自动形式化（Autoformalization）是将自然语言数学转换为形式语言的过程，具有显著的潜力来推动数学推理的发展。然而，现有的努力主要集中在拥有大量在线语料的形式语言上，并且难以跟上快速发展的语言，如 Lean 4。为了解决这个问题，我们提出了一个新的基准 Formalization for Lean 4 (FormL4)，用于评估大型语言模型（LLMs）的自动形式化能力。这个基准包含了对问题、答案、形式陈述和证明的全面评估。此外，我们引入了一个过程监督验证器（PSV）模型，该模型利用 Lean 4 编译器的精确反馈来增强自动形式化。我们的实验表明，PSV 方法能够改进自动形式化，使用更少的过滤训练数据实现更高的准确性。此外，当使用包含详细过程信息的数据进行微调时，PSV 可以更有效地利用这些数据，从而显著提升 Lean 4 的自动形式化能力。我们的数据集和代码可在 https://github.com/rookie-joe/PDA 获取。
 
