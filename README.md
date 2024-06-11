@@ -3,6 +3,7 @@
 ## Related Academic Work
   1. [Lean Workbook:大规模的自然语言数学形式化](Lean01Workbook.html)
   2. [Lean Reasoner:使用Lean提高复杂推理能力](Lean02Reasoner.html)
+  3. [Lean Automation:自动形式化](Lean03Automation.html)
 
 # RLHF Data
 搬运自**Intel tech**:
