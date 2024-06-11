@@ -9,7 +9,7 @@
 
 ### 简单入门 : KM Law 
 通过选用充分大参数模型进行训练的方法，OpenAI估计出了Loss和数据量之间大致呈以下关系：
-$$L(D) = \left( \frac{D_c}{D} \right)^{\alpha_D}$$
+$L(D) = \left( \frac{D_c}{D} \right)^{\alpha_D}$
 其中 $\alpha_D = 0.095$ ， $D_c = 5.4 \times 10^{13}$ (tokens)，尽管1 token 通常大于1B，但大致可以理解为 $54TB$。
 
 **粗糙的估计 :**  为了达到Loss=2，需要36GB的数据；Loss=1时，自然是需要五十TB左右的数据量，而Loss=0.5时就需要大约8万TB的数据量了。
@@ -25,14 +25,14 @@ $$L(N, D) = E + \frac{A}{N^{\alpha}} + \frac{B}{D^{\beta}}$$
 再次说明了幂律关系。
 
 **KM**也同样得到了一个有趣结论：
-$$L(N, D) = \left( \left( \frac{N_c}{N} \right)^{\frac{\alpha_N}{\alpha_D}} + \frac{D_c}{D} \right)^{\alpha_D}$$
+$L(N, D) = \left( \left( \frac{N_c}{N} \right)^{\frac{\alpha_N}{\alpha_D}} + \frac{D_c}{D} \right)^{\alpha_D}$
 经验地：
-$$\alpha_N = 0.076 \quad \alpha_D = 0.103 \quad N_c = 6.4 \times 10^{13} \quad D_c = 1.8 \times 10^{13}$$
+$\alpha_N = 0.076 \quad \alpha_D = 0.103 \quad N_c = 6.4 \times 10^{13} \quad D_c = 1.8 \times 10^{13}$
 
 作者基于假设：过拟合时
-$$\frac{L(N, D)}{L(N, \infty)} > 1.02$$
+$\frac{L(N, D)}{L(N, \infty)} > 1.02$
 得到了D和N之间的参数关系：
-$$D \geq 5 \times 10^{3} \times N^{0.74}$$
+$D \geq 5 \times 10^{3} \times N^{0.74}$
 
 好了，接下来我们就可以做一些更有趣的估计了，比如：
 假设我们是OpenAI的GPT-5训练工程师，公司为我们准备了1000TB的数据量(**大致相当于全球所有书店的总和！**) 我们可以用它训练一个多大的模型，性能大约又会有多好：
