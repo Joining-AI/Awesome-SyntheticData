@@ -51,17 +51,25 @@ NAR通常是指构建能够捕捉算法计算的神经网络的艺术。通过�
 
 # TransNAR：用预训练的基于GNN的NAR增强Transformer
 
-本节描述了我们的混合TransNAR架构（参见图fig:architecture）。TransNAR接受双重输入，包括文本算法问题规范（包含T个标记）及其相应的CLRS-30特定图形表示（包含N个节点），并输出问题的文字回应。我们可以假设，一旦编码，文本输入存储在${\bf T}\in\mathbb{R}^{T\times k}$中，图形输入存储在${\bf G}\in\mathbb{R}^{N\times l}$中。注意，为了简化下面的方程，我们假设所有与问题图形版本相关的信息都存储在节点中——这在CLRS-30中通常不是真的（也可能有边和图级别的输入），但这不会改变下面介绍的基本数据流。
+# 本节描述
 
-TransNAR的前向传递如下展开。首先，我们通过设置${\bf T}^{(0)} = {\bf T}$和${\bf G}^{(0)} = {\bf G}$正确初始化输入。接下来，为了计算步骤$(t+1)$的表示，文本（标记）表示被送入Transformer的当前层：
-\[{\mathbf{\Theta}}^{(t+1)} = \mathrm{FFN}\left(\mathrm{softmax}\left(\frac{({\bf T}^{(t)}{\bf Q}_t)^\top{\bf T}^{(t)}{\bf K}_t}{\sqrt{d_k}}\right){\bf T}^{(t)}{\bf V}_t\right)\]
-其中${\bf Q}_t, {\bf K}_t\in\mathbb{R}^{k\times d_k}, {\bf V}_t\in\mathbb{R}^{k\times k}$分别是键、查询和值转换，而$\mathrm{FFN}$是一个前馈网络。类似地，图形表示被送入NAR层，实现例如标准max-MPNN：
-\[{\bf g}^{(t+1)}_u = \phi\left({\bf g}^{(t)}_u, \max_{1\leq v\leq N}\psi\left({\bf g}^{(t)}_u, {\bf g}^{(t)}_v\right)\right)\]
-其中$\psi, \phi : \mathbb{R}^k\times\mathbb{R}^k\rightarrow\mathbb{R}^k$分别是可学习的**消息**和**更新**函数，而$\max$是逐元素最大聚合。注意方程只提供节点之间的成对交互——实际上，我们的NAR是一个Triplet-GMPNN，也包含三元组交互和一个门控机制。进一步注意，NAR的可学习部分没有时间步索引——每一步，应用的是**共享**函数。这与算法计算在图形上的迭代、重复性质很好地对齐。
+我们的混合TransNAR架构设计如下（详见图：fig-architecture）。TransNAR接受两种输入：文本算法问题规范（包含T个标记）和相应的CLRS-30特定图形表示（包含N个节点），并输出问题的文字回应。我们可以假定，文本输入编码后存储在矩阵**T**中，图形输入存储在矩阵**G**中。为简化方程，我们假设所有与问题图形版本相关的信息都存储在节点中，尽管在CLRS-30中这通常不是真实情况。
 
-一旦两个流都准备好了它们的表示$\mathbf{\Theta}^{(t+1)}$和$\mathbf{G}^{(t+1)}$，图中的节点嵌入就调节Transformer的标记嵌入，产生Transformer流中TransNAR块的最终结果，灵感来自Flamingo：
-\[{\bf T}^{(t+1)} = \mathrm{FFN}\left(\mathrm{softmax}\left(\frac{({\mathbf{\Theta}}^{(t)}{\bf Q}^\times_t)^\top{\bf G}^{(t)}{\bf K}^\times_t}{\sqrt{d_k}}\right){\bf G}^{(t)}{\bf V}^\times_t\right)\]
-其中${\bf Q}_t^\times, {\bf K}_t^\times\in\mathbb{R}^{k\times d_k}, {\bf V}_t^\times\in\mathbb{R}^{k\times k}$分别是交叉注意力的键、查询和值转换。在结束这一层之前，不执行${\bf G}^{(t+1)}$的额外转换。
+TransNAR的前向传递流程如下：
+
+1. 初始化输入：设置 **T(0) = T** 和 **G(0) = G**。
+2. 计算步骤*(t+1)*的表示，文本表示送入Transformer当前层：
+   \[ \Theta^{(t+1)} = \text{FFN}\left(\text{softmax}\left(\frac{(T^{(t)}Q_t)^\top T^{(t)} K_t}{\sqrt{d_k}}\right) T^{(t)} V_t\right) \]
+   其中，**Q_t**, **K_t** 是键和查询矩阵，**V_t** 是值矩阵，FFN是前馈网络。
+3. 图形表示送入NAR层，例如标准max-MPNN：
+   \[ g^{(t+1)}_u = \phi(g^{(t)}_u, \max_{1\leq v\leq N} \psi(g^{(t)}_u, g^{(t)}_v)) \]
+   其中，ψ 和 φ 是可学习的消息和更新函数，max是逐元素最大聚合。
+
+一旦两个流准备好它们的表示 **Θ(t+1)** 和 **G(t+1)**，图中节点嵌入调节Transformer的标记嵌入，产生TransNAR块的最终结果：
+\[ T^{(t+1)} = \text{FFN}\left(\text{softmax}\left(\frac{(Θ^{(t)}Q^\times_t)^\top G^{(t)} K^\times_t}{\sqrt{d_k}}\right) G^{(t)} V^\times_t\right) \]
+其中，**Q_t^\times**, **K_t^\times** 是交叉注意力的键和查询矩阵，**V_t^\times** 是值矩阵。
+
+这个过程重复进行，直到最终层，最终文本输出从 **T(N_l)** 中读取出来。
 
 这个过程一直重复，直到最终的第$N_l$层，当最终的文本输出从${\bf T}^{(N_l)}$中读取出来。最终输出通过最终层产生的预测头转换为标记logits，我们通过标准的下一个标记预测目标来监督。
 
