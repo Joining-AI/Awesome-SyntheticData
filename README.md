@@ -13,3 +13,4 @@
 
 # 数据灌注
 ## DeepMind Alpha系列
+  1. [奥林匹克几何求解](AlphaGeometry.html)
