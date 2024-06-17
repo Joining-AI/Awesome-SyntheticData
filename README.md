@@ -14,4 +14,4 @@
 # 数据灌注
 ## DeepMind Alpha系列
   1. [奥林匹克几何求解](AlphaGeometry.html)
-  2. [LLM+神经算法推理器](TransformerNAR.html)
+  2. [LLM+神经算法推理器](Transformer-NAR.html)
