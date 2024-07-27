@@ -25,9 +25,11 @@
 - [介绍](#介绍)
 - [整体框架](#整体框架)
   - [合成数据](#合成数据)
-  - [相关学术工作](#相关学术工作)
+  - [Lean合成](#Lean合成)
+  - [其他合成数据](#其他合成数据)
   - [RLHF 数据](#rlhf-数据)
   - [数据灌注](#数据灌注)
+  - [Agent数据管线](#Agent数据管线)
 - [贡献指南](#贡献指南)
 - [许可](#许可)
 
@@ -36,31 +38,35 @@
 `Awesome-SyntheticData` 是一个集合了关于合成数据的优秀资源的仓库。合成数据在现代数据科学、机器学习和人工智能领域中发挥着重要作用。这个仓库旨在提供一个全面的资源列表，帮助研究人员、工程师和爱好者更好地理解和利用合成数据。
 
 ## 整体框架
-
 ### 合成数据
+[合成数据的需求](Synthetic_Data_demand_1.html)
+### Lean合成
+  1. [Lean Workbook:大规模的自然语言数学形式化](Lean01Workbook.html)
+  2. [Lean Reasoner:使用Lean提高复杂推理能力](Lean02Reasoner.html)
+  3. [Lean Automation:自动形式化](Lean03Automation.html)
+  4. [基于Putnam 数学竞赛的神经定理证明器评测集](https://arxiv.org/abs/2407.11214)
+  5. [TheoremLlama: 端到端的通用LLM训练为lean4专家框架](https://arxiv.org/abs/2407.03203)
+  6. [lean github: 几乎穷github中的lean仓库的数据集](https://arxiv.org/html/2407.17227v1)
 
-- **需求**
-  - [合成数据的需求](https://joining-ai.github.io/Awesome-SyntheticData/Synthetic_Data_demand_1.html)
+     
+### 其他合成数据
+  1. [通过检索和转换现有数据集获得更好的合成数据](https://arxiv.org/html/2404.14361v3)
 
-### 相关学术工作
-
-- **Lean 系列**
-  - [Lean Workbook: 大规模的自然语言数学形式化](https://joining-ai.github.io/Awesome-SyntheticData/Lean01Workbook.html)
-  - Lean Reasoner: 使用 Lean 提高复杂推理能力
-  - Lean Automation: 自动形式化
-
-### RLHF 数据
-
-- **Intel Tech 搬运**
-  - [使用表格数据 prompt 改进 RAG 和 LLM](https://joining-ai.github.io/Awesome-SyntheticData/RLHF_Data_intel_01.html)
-  - 四种清洗数据的方式
-  - 优化向量数据库
+### #rlhf-数据
+搬运自**Intel tech**:
+  1. [使用表格数据prompt改进RAG和LLM](RLHF_Data_intel_01.html)
+  2. [四种清洗数据的方式](RLHF_Data_Clean_01.html)
+  3. [优化向量数据库](RLHF_Vec_04.html)
 
 ### 数据灌注
+#### DeepMind Alpha系列
+  1. [奥林匹克几何求解](AlphaGeometry.html)
+  2. [LLM+神经算法推理器](Transformer-NAR.html)
 
-- **DeepMind Alpha 系列**
-  - [奥林匹克几何求解](https://joining-ai.github.io/Awesome-SyntheticData/AlphaGeometry.html)
-  - LLM + 神经算法推理器
+### Agent数据管线
+  1. [使用十亿个Agent合成数据](https://arxiv.org/html/2406.20094v1)
+  2. [DataDreamer 一套Python LLM数据管线框架](https://arxiv.org/html/2402.10379v2)
+     
 
 ## 贡献指南
 
