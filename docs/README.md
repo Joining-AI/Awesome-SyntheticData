@@ -4,6 +4,7 @@
   1. [Lean Workbook:大规模的自然语言数学形式化](Lean01Workbook.html)
   2. [Lean Reasoner:使用Lean提高复杂推理能力](Lean02Reasoner.html)
   3. [Lean Automation:自动形式化](Lean03Automation.html)
+     
 # 其他合成数据
   1. [通过检索和转换现有数据集获得更好的合成数据](https://arxiv.org/html/2404.14361v3)
 
@@ -21,4 +22,4 @@
 # Agent数据管线
   1. [使用十亿个Agent合成数据](https://arxiv.org/html/2406.20094v1)
   2. [DataDreamer 一套Python LLM数据管线框架](https://arxiv.org/html/2402.10379v2)
-  3. 
+     
