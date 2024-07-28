@@ -63,6 +63,7 @@
 #### DeepMind Alpha系列
   1. [奥林匹克几何求解](AlphaGeometry.html)
   2. [LLM+神经算法推理器](Transformer-NAR.html)
+  3. [alphaproof 基于Lean的AI数学模型达到IMO银牌水平](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/)
 
 ### Agent数据管线
   1. [使用十亿个Agent合成数据](https://arxiv.org/html/2406.20094v1)
