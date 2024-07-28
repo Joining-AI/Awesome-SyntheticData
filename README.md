@@ -47,6 +47,7 @@
   4. [基于Putnam 数学竞赛的神经定理证明器评测集](https://arxiv.org/abs/2407.11214)
   5. [TheoremLlama: 端到端的通用LLM训练为lean4专家框架](https://arxiv.org/abs/2407.03203)
   6. [lean github: 几乎穷github中的lean仓库的数据集](https://arxiv.org/html/2407.17227v1)
+  7. [alphaproof 基于Lean的AI数学模型达到IMO银牌水平](https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/)
 
      
 ### 其他合成数据
